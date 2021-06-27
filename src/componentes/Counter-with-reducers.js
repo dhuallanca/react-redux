@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { increment, decrement } from '../store-with-reducers';
 
 const CounterMultiple = (props) => {
-  console.log('props', props);
   const onIncrement = () => {
     //usando mapDispatchToProps
     props.increment();
@@ -25,7 +24,6 @@ const CounterMultiple = (props) => {
 //mapstate nos sirve para conectarnos al store del Provider
 // en este ejemplo count es enviado a Counter como una prop
 const mapStateToProps = (estado) => {
-  console.log('estado', estado);
   return {
     count: estado.counterReducer,
     user: estado.userReducer

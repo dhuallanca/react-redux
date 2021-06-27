@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { increment, decrement } from '../store';
 
 const Counter = (props) => {
-  console.log(props);
   const onIncrement = () => {
     //usando action creator
     props.dispatch(increment());

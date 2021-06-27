@@ -2,6 +2,7 @@ import './App.css';
 import { Provider } from 'react-redux';
 import store from './store';
 import storeMultipleReducers from './store-with-reducers';
+import storeRefactor from './store-refactor';
 import Counter from './componentes/Counter';
 import CounterMultiple from './componentes/Counter-with-reducers';
 import Info from './componentes/Info';
@@ -19,6 +20,12 @@ function App() {
           <Info></Info>
         </div>
         <div className="App">
+          <CounterMultiple></CounterMultiple>
+        </div>
+      </Provider>
+      <Provider store={storeRefactor}>
+        <div className="App">
+          <h3>Usando store refactor</h3>
           <CounterMultiple></CounterMultiple>
         </div>
       </Provider>
