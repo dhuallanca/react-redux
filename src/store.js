@@ -26,6 +26,20 @@ const counterReducer = (state = initialState, action) => {
   return state;
 }
 
+//action creators
+// retornan el objeto que describe la accion
+// sirven para no pasar los action como objeto en los dispatch
+export const increment = () => {
+  return {
+    type: INCREMENT
+  }
+}
+export const decrement = () => {
+  return {
+    type: DECREMENT
+  }
+}
+
 const store = createStore(counterReducer);
 
 export default store;
