@@ -1,27 +1,43 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { connect } from 'react-redux';
-import { increment, decrement } from '../store-with-reducers';
+import { increment, decrement } from '../store-combine-reducers';
+import { updateName } from '../actions/user.action';
 
-const Info = ({name, count}) => {
+const Info = ({ user, count, updateName }) => {
+
+  let textInput = useRef('');
+  const handleOnChange = (event) => {
+    const name = event.target.value;
+    updateName(name);
+  }
+  const handleOnClick = () => {
+    updateName(textInput.current.value);
+  }
   return (
     <div>
-      <h1>{name}</h1>
+      <h1>{user.name} - {user.country}</h1>
       <h2>Contador :{count}</h2>
+      <input type="text"
+        ref={textInput}
+        onChange={handleOnChange}></input>
+      <button onClick={handleOnClick}>Update Name</button>
     </div>
   )
 }
 
 const mapStateToProps = (state) => {
   return {
-    name: state.userReducer.name,
+    user: state.userReducer,
     count: state.counterReducer
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    increment: () => dispatch(increment),
-    decrement: () => dispatch(decrement)
+    increment: () => dispatch(increment()),
+    decrement: () => dispatch(decrement()),
+    updateName: (name) => dispatch(updateName(name))
+
   }
 }
 

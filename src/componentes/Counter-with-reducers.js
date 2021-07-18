@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { increment, decrement } from '../store-with-reducers';
+import { increment, decrement } from '../actions/counter.action';
 
 const CounterMultiple = (props) => {
   const onIncrement = () => {
@@ -13,8 +13,16 @@ const CounterMultiple = (props) => {
   }
   return (
     <div>
-      <button onClick={onIncrement}>+</button>
-      <button onClick={props.decrement}>-</button>
+      <div>
+        <h3>using dispatch</h3>
+        <button onClick={onIncrement}>+</button>
+        <button onClick={onDecrement}>-</button>
+      </div>
+      <div>
+        <h3>using dispatch to props with action creator</h3>
+        <button onClick={props.decrement}>-</button>
+        <button onClick={props.increment}>+</button>
+      </div>
       <h1>{props.count}</h1>
       <h2>{props.user.name}</h2>
     </div>
